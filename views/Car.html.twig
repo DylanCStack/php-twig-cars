@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+  <html>
+  <head>
+  <body>
+      <div class='container'>
+
+            {%if cars is empty %}
+                <h1>Sorry no cars match your search.</h1>
+
+            {%endif%}
+            {%if cars is not empty%}
+                     <h1>Here are some cars you may be interested in.</h1>
+                    {% for car in cars%}
+
+                     <li>{{car.getModel}} </li>
+                     <ul>
+                     <li> {{car.getPrice}} </li>
+                     <li> Miles: {{car.getMiles}} </li>
+                     </ul>
+                     {%endfor%}
+
+            {%endif%}
+            <a href="/">Home</a>
+       </div>
+   </body>
+  </html>
