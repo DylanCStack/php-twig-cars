@@ -1,6 +1,13 @@
 <!DOCTYPE html>
   <html>
   <head>
+      <style>
+      img {
+          width:225px;
+          height: auto;
+      }
+      </style>
+  </head>
   <body>
       <div class='container'>
 
@@ -16,6 +23,7 @@
                      <ul>
                      <li> {{car.getPrice}} </li>
                      <li> Miles: {{car.getMiles}} </li>
+                     <li> <img src = {{car.getImage}}></li>
                      </ul>
                      {%endfor%}
 
