@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+  <html>
+    <head>
+    </head>
+    <body>
+        <h1>Your cars</h1>
+        {%for car in cars%}
+        <h2>{{car.getModel}}</h2>
+        <ul>
+            <li>{{car.getMiles}}</li>
+            <li>{{car.getPrice}}</li>
+            <li><img src={{car.getImage}}></li>
+        </ul>
+        {%endfor%}
+        
+        <a href="/Sell">Sell another car</a>
+    </body>
+ </html>

@@ -6,6 +6,10 @@ class Car
   private $miles;
   private $image_path;
 
+
+
+
+
   function __construct($car_type, $car_price, $car_miles,$car_image)
   {
       $this->make_model = $car_type;
@@ -14,6 +18,8 @@ class Car
       $this->image_path = $car_image;
 
   }
+
+
 
   function getPrice()
   {
@@ -33,5 +39,16 @@ class Car
   {
       return $this->image_path;
   }
+
+  function save()
+  {
+    array_push($_SESSION['list_of_cars'], $this);
+  }
+
+  static function getAll()
+  {
+      return $_SESSION['list_of_cars'];
+  }
+
 }
 ?>

@@ -8,7 +8,12 @@
 
     $app->register(new Silex\Provider\TwigServiceProvider(), array(
     'twig.path' => __DIR__.'/../views'
-));
+    ));
+
+    session_start();
+    if (empty($_SESSION['list_of_cars'])){
+        $_SESSION['list_of_cars'] = array();
+    }
 
     $app->get("/", function() use ($app) {
       return $app['twig']->render('input-form.html.twig');
@@ -33,6 +38,19 @@
             }
 
         return $app['twig']->render('Car.html.twig', array("cars" => $cars_matching_search));
+    });
+
+    $app->get("/Sell", function() use ($app) {
+
+      return $app['twig']->render('sell-form.html.twig');
+    });
+
+    $app->post("/my-cars", function() use ($app) {
+    $my_car = new Car($_POST['make-model'], $_POST['price'], $_POST['mileage'], $_POST['image']);
+    $my_car->save();
+    
+
+    return $app['twig']->render('my-cars.html.twig', array('cars' => Car::getAll()));
     });
 
     return $app;
